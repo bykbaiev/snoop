@@ -1,0 +1,9 @@
+nohup: xvfb-run: No such file or directory
+WARNING: Implicit use of clojure.main with options is deprecated, use -M
+INFO [lambdaisland.funnel] {:started ["ws://localhost:44220"], :line 362}
+nohup: xvfb-run: No such file or directory
+WARNING: Implicit use of clojure.main with options is deprecated, use -M
+INFO [lambdaisland.funnel] {:started ["ws://localhost:44220"], :line 362}
+INFO [lambdaisland.funnel] {:connection-opened {:remote-socket-address #InetSocketAddress "127.0.0.1:64427"}, :line 164}
+INFO [lambdaisland.funnel] {:connection-opened {:remote-socket-address #InetSocketAddress "0:0:0:0:0:0:0:1:64435"}, :line 164}
+INFO [lambdaisland.funnel] {:connection-closed {:whoami {:type :kaocha.cljs2, :working-directory "/Users/bykbaiev/Documents/repos/snoop-forked/snoop"}, :code 1006, :reason "", :closed-by-remote? true}, :line 174}

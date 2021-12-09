@@ -2,10 +2,10 @@
 
 set -e
 
-if [[ $GITHUB_ACTIONS == "" ]]; then
-  echo "This script is supposed to run on CI, not in your dev machine."
-  exit 1
-fi
+#if [[ $GITHUB_ACTIONS == "" ]]; then
+#  echo "This script is supposed to run on CI, not in your dev machine."
+#  exit 1
+#fi
 
 do_cleanup() {
   patterns=(xvfb chromium java)
@@ -24,6 +24,9 @@ export CHROMIUM_USER_FLAGS="--no-first-run --no-default-browser-check"
 if [[ $whoami == "root" ]]; then
   export CHROMIUM_USER_FLAGS="$CHROMIUM_USER_FLAGS --no-sandbox"
 fi
+
+echo "Chrome flags"
+echo $CHROMIUM_USER_FLAGS
 
 nohup xvfb-run -e /dev/stdout --server-args=":99.0 -screen 0 1360x1020x24 -ac +extension RANDR" chromium-browser &
 export DISPLAY=:99.0
