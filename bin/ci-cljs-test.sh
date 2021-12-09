@@ -20,7 +20,7 @@ trap do_cleanup EXIT
 nohup clojure -Sdeps '{:deps {lambdaisland/funnel {:mvn/version "0.1.42"}}}' -m lambdaisland.funnel -v &
 
 # Setup chromium flags to use in CI environment
-export CHROMIUM_USER_FLAGS="--no-first-run --no-default-browser-check"
+export CHROMIUM_USER_FLAGS="--no-first-run --no-default-browser-check --no-sandbox"
 if [[ $whoami == "root" ]]; then
   export CHROMIUM_USER_FLAGS="$CHROMIUM_USER_FLAGS --no-sandbox"
 fi
@@ -30,4 +30,7 @@ echo $CHROMIUM_USER_FLAGS
 
 nohup xvfb-run -e /dev/stdout --server-args=":99.0 -screen 0 1360x1020x24 -ac +extension RANDR" chromium-browser &
 export DISPLAY=:99.0
+
+# tail -f nohup.out
+
 bb test cljs
