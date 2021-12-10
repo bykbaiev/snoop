@@ -25,6 +25,35 @@ jobs:
     #     run: |
     #       bb test clj
 
+  dummy-cljs-test:
+    runs-on: ubuntu-18.04
+    steps:
+      - name: Preparations
+        run: |
+          apt-get update
+          apt-get upgrade
+          apt-get install -y curl
+          curl -fsSL https://deb.nodesource.com/setup_16.x | bash -
+          apt-get install -y nodejs
+          npm i -g yarn
+          apt-get install -y openjdk-8-jre
+          curl -O https://download.clojure.org/install/linux-install-1.10.3.1040.sh &&\
+          chmod +x linux-install-1.10.3.1040.sh &&\
+          ./linux-install-1.10.3.1040.sh
+
+      - name: Install Chrome
+        run: |
+          apt-get update -qq
+          apt-get install -q -y xvfb libgbm1 libxss1 chromium-browser
+
+      - name: Install cljs deps
+        run: |
+          npm i -g yarn
+          yarn install
+
+      - name: Run CLJS tests
+        run: ./bin/ci-cljs-test.sh
+
   cljs-test:
     runs-on: ubuntu-18.04
     steps:
