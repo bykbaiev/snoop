@@ -36,7 +36,7 @@ jobs:
 
       - name: Install NodeJS and Yarn
         run: |
-          curl -fsSL https://deb.nodesource.com/setup_16.x | bash -
+          sudo curl -fsSL https://deb.nodesource.com/setup_16.x | bash -
           sudo apt-get install -y nodejs
           npm i -g yarn
 
