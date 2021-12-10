@@ -46,8 +46,14 @@ jobs:
         
       - name: Install Clojure
         run: |
-          curl -O https://download.clojure.org/install/linux-install-1.10.3.1040.sh &&\
-          chmod +x linux-install-1.10.3.1040.sh &&\
+          curl -O https://download.clojure.org/install/linux-install-1.10.3.1040.sh
+          
+      - name: Install Clojure 1
+        run: |
+          chmod +x linux-install-1.10.3.1040.sh
+
+      - name: Install Clojure 2
+        run: |
           ./linux-install-1.10.3.1040.sh
 
       - name: Install Chrome
